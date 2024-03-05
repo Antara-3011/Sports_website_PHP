@@ -1,6 +1,6 @@
 <?php
-  include './config/config.php';
-  include './include/login-validation-coach.php';
+  include '../config/config.php';
+  include '../include/login-validation-coach.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
   <body>
 
   <div class="container mt-3">
-    <h2>Dash Board</h2>
+    <h2>Coach Dash Board</h2>
 
   </div>
 

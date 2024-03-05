@@ -1,6 +1,6 @@
 <?php
-  include './config/config.php';
-  include './include/login-validation-admin.php';
+  include '../config/config.php';
+  include '../include/login-validation-admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,12 +13,9 @@
   <body>
 
   <div class="container mt-3">
-    <h2>Dash Board</h2>
+    <h2>Admin Dash Board</h2>
 
   </div>
-
-
-  </body>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

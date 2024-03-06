@@ -82,18 +82,17 @@
       </nav>
     </header>
 
-    <h1>Welcome, <b>Sai</b></h1>
-    <p>Emailid, <b>123@gmail.com</b></p>
-    <p>Role, <b>Coach</b></p>
+    <h1 style="margin-top:1rem"><b>Welcome, Sai</b></h1>
+   
     <div class="tournament-header">
-      <p>UPCOMING TOURNAMENTS <span>see all</span></p>
+      <p>UPCOMING EVENTS<span>see all</span></p>
     </div>
     <div class="flex">
       <div
         class="card"
         style="width: 18rem; text-align: center; margin-bottom: 1rem"
       >
-        <img src="..." class="card-img-top" alt="Card image" />
+        <img src="./imageadmin/tour3.jpg" class="card-img-top" alt="Card image" />
         <div class="card-body">
           <h5 class="card-title" style="font-weight: bold">Tour Id: 112</h5>
           <h5 class="card-text" style="font-weight: bold">
@@ -110,7 +109,7 @@
           </li>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Click here to Register</a>
+        <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded">More details</button>
         </div>
       </div>
 
@@ -118,7 +117,7 @@
         class="card"
         style="width: 18rem; text-align: center; margin-bottom: 1rem"
       >
-        <img src="..." class="card-img-top" alt="Card image" />
+        <img src="./imageadmin/tour3.jpg" class="card-img-top" alt="Card image" />
         <div class="card-body">
           <h5 class="card-title" style="font-weight: bold">Tour Id: 113</h5>
           <h5 class="card-text" style="font-weight: bold">
@@ -126,8 +125,8 @@
           </h5>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">February 11, 2024</li>
-          <li class="list-group-item">
+          <li class="list-group-item ">February 11, 2024</li>
+          <li class="list-group-item ">
             TDP Hall, near India Spring School, India
           </li>
           <li class="list-group-item">
@@ -135,7 +134,7 @@
           </li>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Click here to Register</a>
+        <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded">More details</button>
         </div>
       </div>
 
@@ -143,7 +142,7 @@
         class="card"
         style="width: 18rem; text-align: center; margin-bottom: 1rem"
       >
-        <img src="..." class="card-img-top" alt="Card image" />
+        <img src="./imageadmin/tour3.jpg" class="card-img-top" alt="Card image" />
         <div class="card-body">
           <h5 class="card-title" style="font-weight: bold">Tour Id: 114</h5>
           <h5 class="card-text" style="font-weight: bold">
@@ -158,7 +157,7 @@
           </li>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Click here to Register</a>
+         <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded">More details</button>
         </div>
       </div>
     </div>

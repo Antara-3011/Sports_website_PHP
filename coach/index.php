@@ -18,7 +18,31 @@
   
   //   mysqli_close($conn);
   // }
-  $sql = "SELECT * FROM tournament ORDER BY DOE DESC"; // Adjust query as needed
+  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Retrieve the search query from the URL
+    $search_query = isset($_GET['query']) ? $_GET['query'] : '';
+
+    $query = "SELECT * FROM tournament WHERE Tname LIKE '%$search_query%'";
+    $result = $conn->query($query);
+
+    if ($result && $search_query) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<p>{$row['Tname']}</p>";
+        }
+    }
+} 
+  $sql_user = "SELECT * FROM users WHERE id = ?";
+  $stmt = mysqli_prepare($conn, $sql_user); 
+  mysqli_stmt_bind_param($stmt, "i", $_SESSION['id']);
+  mysqli_stmt_execute($stmt);
+  $result_user = mysqli_stmt_get_result($stmt);
+  if (mysqli_num_rows($result_user) > 0) {
+    $row = mysqli_fetch_assoc($result_user);
+  } else {
+    echo "No name found"; // Handle the case where no name is found
+  }
+
+  $sql = "SELECT * FROM tournament WHERE status=1 ORDER BY DOE DESC"; // Adjust query as needed
   $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -99,10 +123,11 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex" role="search" method="get">
               <input
                 class="form-control me-2"
                 type="search"
+                name="query"
                 placeholder="Search"
                 aria-label="Search"
               />
@@ -116,7 +141,7 @@
       </nav>
     </header>
     <!--- Body -->
-    <h1>Welcome, <b class="name">Sai</b></h1>
+    <h1>Welcome, <b class="name"><?php echo $row['name']; ?></b></h1>
 
     <div class="tournament-header">
       <p>UPCOMING TOURNAMENTS <span>see all</span></p>
@@ -199,7 +224,7 @@
     </div> -->
     <?php
 if ($result->num_rows > 0) {
-  echo "<div class='d-flex flex-row justify-content-around'>";
+  echo "<div class='scrollable-container d-flex' style='overflow-x: auto;'>";
   while($row = $result->fetch_assoc()) {
     $tournament_id = $row["Tid"]; 
     $tournament_name = $row["Tname"];
@@ -208,8 +233,9 @@ if ($result->num_rows > 0) {
     $location = $row["Tvenue"]; 
     $registration_deadline = $row["Treg_end_date"];
     // Build the HTML structure with fetched data
-    echo "<div class='card' style='width: 18rem; text-align: center; margin-bottom: 1rem'>";
-    if ($image_url) { // Check if image URL exists
+    echo "<div class='card' style='width: 18rem; text-align: center; flex: 0 0 auto; margin-right: 1rem;'>";
+    
+    if ($image_url) { 
       echo "<img src='$image_url' class='card-img-top' alt='Card image'>";
     }
     echo "<div class='card-body'>";
@@ -225,25 +251,20 @@ if ($result->num_rows > 0) {
     echo "</ul>";
     echo "<div class='card-body'>";
     
-    echo "<a href='./CoachTour/index.php
-    ' class='card-link'>Click here to Register</a>";
-   
+    // echo "<a href='./CoachTour/index.php' class='card-link'>Click here to Register</a>";
+    echo "<a href='./CoachTour/index.php?tournament_id=$tournament_id' class='card-link'>Click here to Register</a>";
     echo "</div>";
     echo "</div>";
-    
+    echo "</a>";
   }
   echo "</div>";
 } else {
   echo "No tournaments found";
 }
 ?>
-
 <?php
-// Close the connection
 $conn->close();
 ?>
-
-
     <div class="tournament-header">
       <p style="margin-top: 1rem">UPDATES <span>see all</span></p>
     </div>

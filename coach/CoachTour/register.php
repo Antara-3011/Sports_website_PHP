@@ -1,3 +1,33 @@
+<?php
+  include '../../config/config.php';
+  include '../../include/login-validation-coach.php';
+  function getTournamentDetails($tournament_id) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM tournament WHERE Tid = ?");
+    $stmt->bind_param("i", $tournament_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    return $row;
+  }
+  $selected_tournament_id=null;
+  if (isset($_GET['tournament_id']) && is_numeric($_GET['tournament_id'])) {
+    $selected_tournament_id = $_GET['tournament_id'];
+    echo "<script>sessionStorage.setItem('selected_tournament_id', $selected_tournament_id);</script>";
+  } else if (isset($_SESSION['selected_tournament_id'])) {
+    // Retrieve tournament_id from sessionStorage if it's not in the URL
+    $selected_tournament_id = $_SESSION['selected_tournament_id'];
+    echo "<script>sessionStorage.setItem('selected_tournament_id', $selected_tournament_id);</script>";
+  } else {
+    echo "Error: Tournament ID not provided in the URL or session.";
+  }
+  if ($selected_tournament_id !== null) {
+    $tournament_details = getTournamentDetails($selected_tournament_id);
+  } else {
+    echo "Invalid Tournament ID.";
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,19 +65,27 @@
     </header>
 
     <main>
-      <a href="./index.php">Go Back</a>
-
+      <!-- <a href='./index.php?tournament_id= $tournament_id'>Go Back</a> -->
+      <?php
+      echo "<a href='./index.php?tournament_id= $selected_tournament_id'>Go Back</a>";
+      ?>
       <div
         class="d-flex justify-content-around m-3 px-lg-5 py-lg-5 rounded-3 bg-info-subtle"
       >
         <div>
           <img src="../../images/logoTour.png" style="width: 7rem; height: 7rem" />
         </div>
-        <div>
-          <h5>T101</h5>
-          <h5>Inter District Open Karate Championship</h5>
-          <h6>February 11, 2024</h6>
-          <h6>TDP Hall, near India Spring School, India</h6>
+        <div class="d-flex flex-column align-items-center">
+        <?php
+    if (isset($tournament_details['Tid'], $tournament_details['Tname'], $tournament_details['DOE'], $tournament_details['Tvenue'])) {
+        echo "<h3>Tournament ID: " . $tournament_details['Tid'] . "</h3>";
+        echo "<h3>Tournament Name: " . $tournament_details['Tname'] . "</h3>";
+        echo "<h6>Date of Event: " . $tournament_details['DOE'] . "</h6>";
+        echo "<h6>Venue: " . $tournament_details['Tvenue'] . "</h6>";
+    } else {
+        echo "Error: Invalid data structure in tournament details.";
+    }
+    ?>
         </div>
       </div>
       <div class="m-4">

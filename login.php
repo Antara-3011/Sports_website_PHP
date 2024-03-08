@@ -30,6 +30,7 @@
       $_SESSION['id'] = $row['id'];
       $_SESSION['name'] = $row['name'];
       $_SESSION['role'] = $row['role'];
+      $_SESSION['email'] = $row['email'];
       if($row['role']=='Admin')
         header('Location: ./admin');
       else if($row['role']=='Coach')

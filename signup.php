@@ -16,6 +16,8 @@ if(!empty($_POST)){
     echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button></a>";
   }else{
     $sql = "INSERT INTO users (name, email, password, role) VALUES ('$name', '$email', '$password', '$role')";
+    //insert record of coach data in coach table
+    //insert record of athlete data in athlete table
     $res = mysqli_query($conn, $sql);
     echo "<div class='message'>
     <p>Registered Successfully!</p>

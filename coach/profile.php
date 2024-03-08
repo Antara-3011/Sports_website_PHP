@@ -1,6 +1,27 @@
 <?php
   include '../config/config.php';
   include '../include/login-validation-coach.php';
+
+  global $conn;
+  if (isset($_SESSION['email'])) {
+  $coach_email = $_SESSION['email'];
+  $result = mysqli_query($conn, "SELECT name, email FROM coach WHERE email =' $coach_email'");
+  $coach_data = $result->fetch_assoc();
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // $contact = $_POST['contact'];
+    // $club_name = $_POST['club_name'];
+
+    // Perform the update in the coach table
+    // $update_query = "UPDATE coach SET contact = '$contact', club_name = '$club_name' WHERE email = $coach_email";
+    // $conn->query($update_query);
+
+    // Redirect to the same page after the update
+    header("Location: ./index.php");
+    exit();
+  }
+}else{
+  echo "Session email not set.";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,57 +67,72 @@
       >
         <h4>My Personal Details</h4>
       </div>
+      <form action="" method="post">
       <div class="container mt-5">
         <div class="row mb-4">
           <div class="col-md-3"></div>
           <div class="col-md-3">Name:</div>
-          <div class="col-md-3"><input type="text" /></div>
+          <div class="col-md-3"><input type="text" class="name"/></div>
+          <!-- <div class="col-md-3">
+            <?php echo $coach_data['name']; ?>
+          </div> -->
           <div class="col-md-3"></div>
         </div>
         <div class="row mb-4">
           <div class="col-md-3"></div>
           <div class="col-md-3">Email:</div>
           <div class="col-md-3"><input type="email" /></div>
+          <!-- <div class="col-md-3"><?php echo $coach_data['email']; ?></div> -->
           <div class="col-md-3"></div>
         </div>
         <div class="row mb-4">
           <div class="col-md-3"></div>
           <div class="col-md-3">Contact:</div>
           <div class="col-md-3"><input type="number" /></div>
+          <!-- <div class="col-md-3"><input type="number" name="contact" value="<?php echo $coach_data['contact']; ?>" /></div> -->
           <div class="col-md-3"></div>
         </div>
         <div class="row mb-4">
           <div class="col-md-3"></div>
           <div class="col-md-3">Club-name:</div>
           <div class="col-md-3"><input type="text" /></div>
+          <!-- <div class="col-md-3"><input type="text" name="club_name" value="<?php echo $coach_data['club_name']; ?>" /></div> -->
           <div class="col-md-3"></div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-2">
-            <a
-              href="./index.php"
+            <button
+              
               class="p-2 rounded bg-success text-white border-0"
             >
               Save
-            </a>
+            </button>
           </div>
           <div class="col-md-2">
-            <a
-              href="./index.php"
+            <button type="button" 
+              
               class="p-2 rounded border-0 text-white bg-success"
-              >Edit</a
+              >Edit</button
             >
           </div>
           <div class="col-md-4"></div>
         </div>
       </div>
+</form>
     </main>
 
     <!-- Footer -->
     <footer>
       <p>&copy; 2024 Martial Tour. All rights reserved.</p>
     </footer>
+  <script>
+    function enableEditing() {
+        // Enable the input fields for editing
+        document.querySelector('input[name="contact"]').removeAttribute('readonly');
+        document.querySelector('input[name="club_name"]').removeAttribute('readonly');
+    }
+  </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

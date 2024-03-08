@@ -163,7 +163,7 @@
     </div>
 
     <div class="tournament-header">
-      <p style="margin-top: 1rem">UPDATES <span>see all</span></p>
+      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="height: 50px; width:190px; margin-top:10px;font-weight:bold;margin-bottom:20px;" src="./tournamentCreate.php">Create Tounament</button>
     </div>
 
     <footer>

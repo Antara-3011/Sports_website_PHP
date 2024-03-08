@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2024 at 11:20 AM
+-- Generation Time: Mar 08, 2024 at 11:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,9 @@ CREATE TABLE `athlete` (
   `gender` varchar(22) NOT NULL,
   `height` int(10) NOT NULL,
   `weight` int(10) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `district` varchar(100) NOT NULL,
+  `contact` int(13) NOT NULL,
   `coach_name` varchar(100) NOT NULL,
   `coach_email` varchar(100) NOT NULL,
   `experience` int(5) NOT NULL,

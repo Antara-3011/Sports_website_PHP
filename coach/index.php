@@ -1,23 +1,25 @@
 <?php
-  //include '../config/config.php';
-  // include '../include/login-validation-coach.php';
-  function get_name_from_db() {
-    include '../config/config.php';
-    $sql = "SELECT name FROM users WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $sql); 
-    mysqli_stmt_bind_param($stmt, "i", $_SESSION['id']);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+  include '../config/config.php';
+  include '../include/login-validation-coach.php';
+  // function get_name_from_db() {
+  //   include '../config/config.php';
+  //   $sql = "SELECT name FROM users WHERE id = ?";
+  //   $stmt = mysqli_prepare($conn, $sql); 
+  //   mysqli_stmt_bind_param($stmt, "i", $_SESSION['id']);
+  //   mysqli_stmt_execute($stmt);
+  //   $result = mysqli_stmt_get_result($stmt);
   
-    if (mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_assoc($result);
-      return $row["name"];
-    } else {
-      echo "No name found"; // Handle the case where no name is found
-    }
+  //   if (mysqli_num_rows($result) > 0) {
+  //     $row = mysqli_fetch_assoc($result);
+  //     return $row["name"];
+  //   } else {
+  //     echo "No name found"; // Handle the case where no name is found
+  //   }
   
-    mysqli_close($conn);
-  }
+  //   mysqli_close($conn);
+  // }
+  $sql = "SELECT * FROM tournament ORDER BY DOE DESC"; // Adjust query as needed
+  $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,12 +116,12 @@
       </nav>
     </header>
     <!--- Body -->
-    <h1>Welcome, <b class="name"><?php echo get_name_from_db(); ?></b></h1>
+    <h1>Welcome, <b class="name">Sai</b></h1>
 
     <div class="tournament-header">
       <p>UPCOMING TOURNAMENTS <span>see all</span></p>
     </div>
-    <div class="d-flex justify-content-around">
+    <!-- <div class="d-flex justify-content-around">
       <div
         class="card"
         style="width: 18rem; text-align: center; margin-bottom: 1rem"
@@ -194,7 +196,53 @@
           <a href="#" class="card-link">Click here to Register</a>
         </div>
       </div>
-    </div>
+    </div> -->
+    <?php
+if ($result->num_rows > 0) {
+  echo "<div class='d-flex flex-row justify-content-around'>";
+  while($row = $result->fetch_assoc()) {
+    $tournament_id = $row["Tid"]; 
+    $tournament_name = $row["Tname"];
+    $image_url = $row["Timage"]; 
+    $doe = $row["DOE"]; 
+    $location = $row["Tvenue"]; 
+    $registration_deadline = $row["Treg_end_date"];
+    // Build the HTML structure with fetched data
+    echo "<div class='card' style='width: 18rem; text-align: center; margin-bottom: 1rem'>";
+    if ($image_url) { // Check if image URL exists
+      echo "<img src='$image_url' class='card-img-top' alt='Card image'>";
+    }
+    echo "<div class='card-body'>";
+    echo "<h5 class='card-title' style='font-weight: bold'>Tour Id: $tournament_id</h5>";
+    echo "<h5 class='card-text' style='font-weight: bold'>$tournament_name</h5>";
+    echo "</div>";
+    echo "<ul class='list-group list-group-flush'>";
+    echo "<li class='list-group-item'>$doe</li>";
+    echo "<li class='list-group-item'>$location</li>";
+    if ($registration_deadline) { 
+      echo "<li class='list-group-item'>Reg. Deadline: $registration_deadline</li>";
+    }
+    echo "</ul>";
+    echo "<div class='card-body'>";
+    
+    echo "<a href='./CoachTour/index.php
+    ' class='card-link'>Click here to Register</a>";
+   
+    echo "</div>";
+    echo "</div>";
+    
+  }
+  echo "</div>";
+} else {
+  echo "No tournaments found";
+}
+?>
+
+<?php
+// Close the connection
+$conn->close();
+?>
+
 
     <div class="tournament-header">
       <p style="margin-top: 1rem">UPDATES <span>see all</span></p>

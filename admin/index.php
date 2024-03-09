@@ -80,7 +80,7 @@
           </div>
         </div>
       </nav>
-    </header>
+  </header>
 
     <h1 style="margin-top:1rem"><b>Welcome, Sai</b></h1>
    

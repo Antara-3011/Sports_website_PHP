@@ -1,7 +1,7 @@
 .inputHeading{
 padding: 6px;
 }
-form{
+.fromWrap{
     justify-content: center;
    align-items:center;
     border-radius: 4%;
@@ -9,13 +9,11 @@ form{
     margin-left: 270px;
     margin-top: 30px;
     margin-bottom:90px;
-    padding: 40px;
-    width:700px;
-  
+    padding:40px;
+    margin-right: 270px;
 }
 .tournament_body{
     justify-content: center;
-   
    
 }
 

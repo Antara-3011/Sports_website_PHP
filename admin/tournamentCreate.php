@@ -16,7 +16,8 @@
     <div style="text-align:center;">
       <h1 style="padding-top:20px;"><b>Create Tournament</b></h1>
     </div>
-  <form class="border-3">
+    <div class="fromWrap">
+  <form>
   <div class="form-row">
    <div class="form-group col-md-6">
       <label for="inputTounamentName" class="inputHeading">Tournament Name</label>
@@ -59,8 +60,9 @@
     </div>
   </div>
   
-  <button type="submit" class="btn btn-primary" style="margin-top:10px;">Sign in</button>
+  <button type="submit" class="btn btn-primary" style="margin-top:10px;">Create Tournament</button>
 </form>
+</div>
 </div>
 </body>
 </html>

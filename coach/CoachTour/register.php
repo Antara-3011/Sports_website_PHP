@@ -27,6 +27,55 @@
   } else {
     echo "Invalid Tournament ID.";
   }
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $coach_email = $_SESSION['email'];
+    $sql1 = "SELECT * FROM coach where email='$coach_email'";
+    $res1 = $conn->query($sql1);
+    $row = $res1->fetch_assoc();
+    $coach_id = $row['id'];
+    $coach_name = $row['name'];
+
+    $name = isset($_POST['name']) ? $_POST['name'] : "";
+    $dob = isset($_POST['dob']) ? $_POST['dob'] : "";
+    $gender =isset($_POST['gender']) ? $_POST['gender'] : ""; 
+    $exp = isset($_POST['exp']) ? $_POST['exp'] : "";
+    $height = isset($_POST['height']) ? $_POST['height'] : "";
+    $weight = isset($_POST['weight']) ? $_POST['weight'] : "";
+    $state =isset($_POST['state']) ? $_POST['state'] : ""; 
+    $district = isset($_POST['district']) ? $_POST['district'] : "";
+    $email = isset($_POST['email']) ? $_POST['email'] : "";
+    $contact = isset($_POST['contact']) ? $_POST['contact'] : "";
+    $club_name =isset($_POST['club_name']) ? $_POST['club_name'] : ""; 
+
+    $stmt = $conn->prepare("INSERT INTO athlete (name, DOB, gender, experience, height, weight, state, district, email, contact, club_name,coach_name,coach_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+    $stmt->bind_param("sssiiisssisss", $name, $dob, $gender, $exp, $height, $weight, $state, $district, $email, $contact, $club_name,$coach_name,$coach_email);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    // Check if the insertion was successful
+    if ($result) {
+        echo "Athlete registration successful!";
+    } else {
+        echo "Error: Athlete registration failed.";
+    }
+    $athlete_id_query = $conn->query("SELECT id from athlete where email='$email'");
+    $athlete_id_row = $athlete_id_query->fetch_assoc();
+    $athlete_id = $athlete_id_row['id'];
+
+    if ($coach_id !== null) {
+      // Now you can proceed with the insert
+      $sql = "INSERT INTO athlete_tournament_registration (athlete_id, coach_id, Tid) VALUES ('$athlete_id', '$coach_id', '$selected_tournament_id')";
+      $res = mysqli_query($conn, $sql);
+      if ($res) {
+        echo "athlete_tournament_registration successful!";
+    } else {
+        echo "Error: athlete_tournament_registration failed.";
+    }
+  } else {
+      echo "Error: Coach not found.";
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,18 +140,19 @@
       <div class="m-4">
         <h5><b>New Registration</b></h5>
       </div>
+      <form method="post">
       <div class="container">
         <div class="row mb-3">
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Name</div>
-              <div class="col-md-6"><input type="text" /></div>
+              <div class="col-md-6"><input type="text" name="name" /></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">DOB</div>
-              <div class="col-md-6"><input type="date" /></div>
+              <div class="col-md-6"><input type="date" name="dob"/></div>
             </div>
           </div>
         </div>
@@ -110,13 +160,13 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Gender</div>
-              <div class="col-md-6"><input type="text" /></div>
+              <div class="col-md-6"><input type="text"  name="gender"/></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Experience</div>
-              <div class="col-md-6"><input type="text" /></div>
+              <div class="col-md-6"><input type="text"  name="exp"/></div>
             </div>
           </div>
         </div>
@@ -124,13 +174,13 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Height</div>
-              <div class="col-md-6"><input type="number" /></div>
+              <div class="col-md-6"><input type="number" name="height" /></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Weight</div>
-              <div class="col-md-6"><input type="number" /></div>
+              <div class="col-md-6"><input type="number" name="weight" /></div>
             </div>
           </div>
         </div>
@@ -138,13 +188,13 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">State</div>
-              <div class="col-md-6"><input type="text" /></div>
+              <div class="col-md-6"><input type="text" name="state"/></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">District</div>
-              <div class="col-md-6"><input type="text" /></div>
+              <div class="col-md-6"><input type="text"  name="district"/></div>
             </div>
           </div>
         </div>
@@ -152,13 +202,13 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Email</div>
-              <div class="col-md-6"><input type="email" /></div>
+              <div class="col-md-6"><input type="email" name="email"/></div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6">Contact</div>
-              <div class="col-md-6"><input type="number" /></div>
+              <div class="col-md-6"><input type="number" name="contact"/></div>
             </div>
           </div>
         </div>
@@ -166,12 +216,19 @@
           <div class="col-md-12">
             <div class="row">
               <div class="col-md-3">Club Name</div>
-              <div class="col-md-9"><input type="text" /></div>
+              <div class="col-md-9"><input type="text"  name="club_name" /></div>
             </div>
           </div>
         </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
       </div>
+      </form>
       <div class="divider">OR</div>
+      <form>
       <div class="container">
         <div class="row">
           <div class="col-md-3"></div>
@@ -192,6 +249,7 @@
           <div class="col-md-3"></div>
         </div>
       </div>
+      </form>
     </main>
 
     <footer>

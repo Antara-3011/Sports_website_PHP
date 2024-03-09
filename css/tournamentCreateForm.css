@@ -1,0 +1,19 @@
+.inputHeading{
+padding: 6px;
+}
+.fromWrap{
+    justify-content: center;
+   align-items:center;
+    border-radius: 4%;
+    border-style:ridge;
+    margin-left: 270px;
+    margin-top: 30px;
+    margin-bottom:90px;
+    padding:40px;
+    margin-right: 270px;
+}
+.tournament_body{
+    justify-content: center;
+   
+}
+

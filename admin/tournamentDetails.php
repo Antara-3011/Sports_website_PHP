@@ -104,6 +104,7 @@
               </ul>
             </div>
             <button class="btn btn-primary" style="margin-top:10px; width:18rem; height:40px;"><a href="./tournamentCreate.php" class="text-white">Edit Tournament</a></button>
+            <button class="btn btn-primary" style="margin-top:10px; width:18rem; height:40px;"><a href="./" class="text-white">Delete Tournament</a></button>
           </div>
           <!--- Right Column -->
           <div class="col-md-8 bg-info-subtle">

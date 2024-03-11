@@ -60,7 +60,7 @@
     </div>
   </div>
   
-  <button type="submit" class="btn btn-primary" style="margin-top:10px;">Create Tournament</button>
+  <button type="submit" class="btn btn-primary" style="margin-top:10px;" onclick="window.location.href='tournamentDetails.php'">Create Tournament</button>
 </form>
 </div>
 </div>

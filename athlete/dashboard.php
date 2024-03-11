@@ -10,8 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <!-- <link rel="stylesheet" href="/coach.css" /> -->
-    <link rel="stylesheet" href="/dashboard.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
   <body>
     <!--- Navbar -->

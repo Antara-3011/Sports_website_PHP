@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
     <!-- <link rel="stylesheet" href="/coach.css" /> -->
-    <link rel="stylesheet" href="/dashboard.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
   <body>
     <!--- Navbar -->

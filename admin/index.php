@@ -109,7 +109,7 @@
           </li>
         </ul>
         <div class="card-body">
-        <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded">More details</button>
+        <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded"  onclick="window.location.href='tournamentDetails.php'">More details</button>
         </div>
       </div>
 
@@ -134,7 +134,7 @@
           </li>
         </ul>
         <div class="card-body">
-        <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded">More details</button>
+        <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded"  onclick="window.location.href='tournamentDetails.php'">More details</button>
         </div>
       </div>
 
@@ -157,7 +157,7 @@
           </li>
         </ul>
         <div class="card-body">
-         <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded">More details</button>
+         <button class=" btn-lg bg-primary border-0 rounded text-white" style="height: 50px; width: 150px;border:rounded"  onclick="window.location.href='tournamentDetails.php'">More details</button>
         </div>
       </div>
     </div>

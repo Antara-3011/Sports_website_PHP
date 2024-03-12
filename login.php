@@ -8,7 +8,7 @@
     if($_SESSION['role']=='Coach'){   // is coach
       header("Location: ./coach");
     }
-    if($_SESSION['role']=='Athlete'){   // is athlete
+    if($_SESSION['role']=='Athlete'){   //is an athlete
       header("Location: ./athlete");
     }
     else{ 

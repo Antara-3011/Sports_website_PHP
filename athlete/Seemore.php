@@ -46,15 +46,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Upload Excel File</a>
+                <a class="nav-link" aria-current="page" href="../logout.php">Log out</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Cart </a>
-              </li>
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
@@ -69,10 +66,10 @@
                   <li><a class="dropdown-item" href="#">Settings</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" href="/login.html">Log out</a>
+                    <a class="dropdown-item" href="../logout.php">Log out</a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
             <form class="d-flex" role="search">
               <input
@@ -181,7 +178,7 @@
               <button id="seeMoreBtn" onclick="toggleContent()">See more</button>
             </div> -->
             <div>
-              <button id="seeMoreBtn" onclick="toggleContent()">Close</button>
+              <button id="seeMoreBtn"><a href="./index.php">Close</a></button>
             </div>
           </div>
         </div>

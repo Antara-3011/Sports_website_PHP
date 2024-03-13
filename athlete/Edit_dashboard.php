@@ -46,15 +46,12 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Upload Excel File</a>
+                <a class="nav-link" aria-current="page" href="../logout.php">Log out</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Cart </a>
-              </li>
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
@@ -69,10 +66,10 @@
                   <li><a class="dropdown-item" href="#">Settings</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" href="/login.html">Log out</a>
+                    <a class="dropdown-item" href="../logout.php">Log out</a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
             <form class="d-flex" role="search">
               <input
@@ -93,139 +90,94 @@
     <div class="profile-head">
       <h3>PROFILE INFORMATION</h3>
     </div>
-    <div class="flex justify-around p-3 mb-2 bg-info-subtle text-info-emphasis border border-3">
-        <div class="border border-stone-600 rounded-lg px-5 w-60 border border-2">
-          <div class="mt-5 mb-6 px-20 py-20 bg-slate-500 h-16 ">
+    <div class="container my-3 bg-info-subtle text-info-emphasis border border-3">
+        <div class="row">
+          <div class="col-md-4 border border-2 border-stone-600 rounded-lg bg-slate-500">
             <p>IMAGE</p>
             <input type="file" onChange={handleChange} />
             <img src={file} />
           </div>
-        </div>
-        <div class="flex-col">
-          <div class="flex">
-          <div class="flex">
-          <div class="editmarg" >
-              <label htmlFor="username">Name</label></div>
-              <div>
-              <input
-                type="text"
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="col-md-6">Name:</div>
+              <div class="col-md-6"><input type="text"
                 placeholder="type here"
-                class="border ml-3 p-1 mb-2 rounded-lg"
-                name="username"
-                id="username"
-              ></input></div>
+                name="username"></div>
             </div>
-
-            <div class="flex">
-              <div class="editmarg">
-              <label htmlFor="email">Email</label></div>
-              <div>
-              <input
-                type="text"
-                placeholder="type here"
-                class="border ml-3 p-1 mb-2 rounded-lg"
-                name="email"
-                id="email"
-              ></input>
+            <div class="col-md-6">
+            <div class="col-md-6">Email:</div>
+              <div class="col-md-6"><input type="email"></div>
             </div>
           </div>
-          </div>
-          <div class="flex">
-          <div class="flex">
-            <div class="editmarg" >
-              <label htmlFor="Age">Age</label></div>
-              <div>
-              <input
-                type="number"
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="col-md-6">Age:</div>
+              <div class="col-md-6"><input type="number"
                 placeholder="type here"
-                class="border ml-3 p-2 rounded-lg"
-                name="age"
-                id="age"
-              ></input></div>
+                name="username"></div>
             </div>
-            <div class="flex">
-            <div class="editmarg" >
-              <label htmlFor="gender">Gender</label></div>
-              <div>
-              <input
-                type="text"
-                placeholder="type here"
-                class="border ml-3 p-2 rounded-lg"
-                name="gender"
-                id="gender"
-              ></input>
+            <div class="col-md-6">
+            <div class="col-md-6">Gender:</div>
+              <div class="col-md-6"><input type="text"></div>
             </div>
           </div>
-          </div>
-          <div class="flex">
-            <div class="ml-3 mt-3">
-              <label htmlFor="height">Height</label>
-              <input
-                type="number"
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="col-md-6">Height(cm):</div>
+              <div class="col-md-6"><input type="number"
                 placeholder="type here"
-                class="border ml-3 p-2 rounded-lg"
-                name="height"
-                id="height"
-              ></input>
+                name="username"></div>
             </div>
-            <div class="ml-3 mt-3">
-              <label htmlFor="weight">Weight(kg)</label>
-              <input
-                type="number"
-                placeholder="type here"
-                class="border ml-3 p-2 rounded-lg w-24"
-                name="weight"
-                id="weight"
-              ></input>
+            <div class="col-md-6">
+            <div class="col-md-6">Weight:</div>
+              <div class="col-md-6"><input type="number"></div>
             </div>
           </div>
-          <div class="flex">
-            <div class="ml-3 mt-3">
-              <label htmlFor="coachname">Coach</label>
-              <input
-                type="text"
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="col-md-6">Coach Name:</div>
+              <div class="col-md-6"><input type="text"
                 placeholder="type here"
-                class="border ml-3 p-2 rounded-lg"
-                name="coachname"
-                id="coachname"
-              ></input>
+                name="username"></div>
             </div>
-            <div class="ml-3 mt-3">
-              <label htmlFor="experience">Experience(yrs)</label>
-              <input
-                type="number"
-                placeholder="type here"
-                class="w-24 border ml-3 p-2 rounded-lg"
-                name="experience"
-                id="experience"
-              ></input>
+            <div class="col-md-6">
+            <div class="col-md-6">Coach Email:</div>
+              <div class="col-md-6"><input type="email"></div>
             </div>
           </div>
-          <div class="ml-3 mt-3">
-            <label htmlFor="club">Club</label>
-            <input
-              type="text"
-              placeholder="type here"
-              class="border ml-3 p-2 rounded-lg"
-              name="club"
-              id="club"
-            ></input>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="col-md-6">Club Name:</div>
+              <div class="col-md-6"><input type="text"
+                placeholder="type here"
+                name="username"></div>
+            </div>
+            <div class="col-md-6">
+            <div class="col-md-6">Experience(in yrs):</div>
+              <div class="col-md-6"><input type="number"></div>
+            </div>
           </div>
-
-          <div class="ml-3 mt-3">
-            <label htmlFor="eachievement">Achievements</label>
-            <textarea cols={50}></textarea>
+          <div class="row mt-3">
+            <div class="col">
+              <div>Achievements:</div>
+              <div><input type="text"></div>
+            </div>
           </div>
-          <div class="d-flex flex-row mt-3">
-            <div class="editmarg">
-                <button id="seeMoreBtn" onclick="toggleContent()">Cancel</button>
-              </div>
-              <div>
-                <button id="seeMoreBtn" onclick="toggleContent()">Save</button>
-              </div>
+          <div class="row my-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <button><a href="./index.php">Save</a></button>
+            </div>
+            <div class="col-md-4">
+              <button><a href="./index.php">Cancel</a></button>
+            </div>
+            <div class="col-md-2"></div>
           </div>
         </div>
       </div>
+</div>
       <footer>
         <p>&copy; 2024 Martial Tour. All rights reserved.</p>
       </footer>

@@ -13,9 +13,16 @@ if(!empty($_POST)){
   $orgEmail= isset($_POST['orgEmail']) ? $_POST['orgEmail'] : "";
   $orgNumber= isset($_POST['orgNumber']) ? $_POST['orgNumber'] : "";
   
-}else{
+
   $sql = "INSERT INTO tournament (Tname,Tid,DOE,Tvenue,Treg_start_date,Treg_end_date,organizer_name,organizer_email,organiser_number) VALUES ('$inputTounamentName','$inputTounamentID','$tournamentDate','$tournamentVenue','$tournamentRegSt','$tournamentRegEd','$orgName','$orgEmail','$orgNumber')";
-}
+  $res = mysqli_query($conn, $sql);
+  echo "<div class='message'>
+    <p>Create Tournament Successfully!</p>
+    </div><br>";
+ }
+//else{
+//   echo json_encode(array("Status" => "Error", "Message" => "Invalid request method"));
+// }
 
 ?>
 
